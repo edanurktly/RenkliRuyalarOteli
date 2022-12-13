@@ -15,6 +15,10 @@ namespace RenkliRuyalarOteli.DAL.EntityConfigrations
             builder.Property(p => p.Soyadi).HasMaxLength(30);
             builder.Property(p => p.CepNo).HasMaxLength(20);
 
+            builder.HasOne(p => p.Kullanici)
+                .WithMany(p => p.Musteriler).
+                OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
+
 
         }
     }

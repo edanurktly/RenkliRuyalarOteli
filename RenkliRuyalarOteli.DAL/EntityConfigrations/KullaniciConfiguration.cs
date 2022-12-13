@@ -8,11 +8,16 @@ namespace RenkliRuyalarOteli.DAL.EntityConfigrations
         public override void Configure(EntityTypeBuilder<Kullanici> builder)
         {
             base.Configure(builder);
+
             builder.Property(p => p.TcNo)
                 .HasMaxLength(11);
 
             builder.Property(p => p.Email)
                 .HasMaxLength(50);
+
+
+
+
 
 
         }

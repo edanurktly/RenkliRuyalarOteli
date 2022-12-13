@@ -9,6 +9,10 @@ namespace RenkliRuyalarOteli.DAL.EntityConfigrations
         {
             base.Configure(builder);
 
+            builder.HasOne(p => p.Kullanici)
+                .WithMany(p => p.OdaFiyatlari).
+                OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
+
         }
     }
 }

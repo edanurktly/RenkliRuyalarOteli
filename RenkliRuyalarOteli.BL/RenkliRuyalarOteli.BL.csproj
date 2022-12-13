@@ -11,4 +11,9 @@
     <ProjectReference Include="..\RenkliRuyalarOteli.Entities\RenkliRuyalarOteli.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Concrete\" />
+  </ItemGroup>
+
 </Project>

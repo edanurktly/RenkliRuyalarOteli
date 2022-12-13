@@ -9,6 +9,8 @@ namespace RenkliRuyalarOteli.Entities.Entites.Concrete
         public bool Cinsiyet { get; set; }
         public string MusteriTcNo { get; set; }
         public string CepNo { get; set; }
+
+        public ICollection<Rezervasyon> Rezervasyonlar { get; set; }
     }
 }
 

@@ -9,5 +9,6 @@ namespace RenkliRuyalarOteli.Entities.Entites.Concrete
         public Guid MusteriId { get; set; }
         public Guid OdaFiyatId { get; set; }
         public Guid OdaId { get; set; }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RenkliRuyalarOteli.Entities.Entites.Concrete;
+using System.Reflection;
 
 namespace RenkliRuyalarOteli.DAL.Contexts
 {
@@ -14,6 +15,11 @@ namespace RenkliRuyalarOteli.DAL.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"server=(localdb)\mssqllocaldb;Database=RenkliRuyalarOteli;Trusted_Connection=true");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

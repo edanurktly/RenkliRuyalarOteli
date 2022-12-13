@@ -8,6 +8,7 @@ namespace RenkliRuyalarOteli.Entities.Entites.Concrete
         public byte KisiSayisi { get; set; }
         public bool Durum { get; set; } = true;
         public ICollection<OdaFiyat> OdaFiyatlari { get; set; }
+        public ICollection<Rezervasyon> Rezervasyonlar { get; set; }
 
     }
 }

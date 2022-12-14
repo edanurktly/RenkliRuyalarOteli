@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RenkliRuyalarOteli.DAL.Abstract;
+﻿using RenkliRuyalarOteli.DAL.Abstract;
 using RenkliRuyalarOteli.DAL.Contexts;
 using RenkliRuyalarOteli.Entities.Entites.Abstarct;
 using System.Linq.Expressions;
@@ -8,9 +7,11 @@ namespace RenkliRuyalarOteli.DAL.Concrete
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T : BaseEntity, new()
     {
+        public SqlDbContext dbContext;
+
         public RepositoryBase()
         {
-            DbContext = new SqlDbContext();
+            dbContext = new SqlDbContext();
         }
         public virtual Task<int> CreateAsync(T entity)
         {

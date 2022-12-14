@@ -1,3 +1,6 @@
+using RenkliRuyalarOteli.BL.Abstract;
+using RenkliRuyalarOteli.BL.Concrete;
+
 namespace RenkliRuyalarOteli.WebMvcUI
 {
     public class Program
@@ -8,6 +11,17 @@ namespace RenkliRuyalarOteli.WebMvcUI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IKullaniciManager, KullaniciManager>();
+            builder.Services.AddScoped<IMusteriManager, MusteriManager>();
+            builder.Services.AddScoped<IOdaManager, OdaManager>();
+            builder.Services.AddScoped<IOdaFiyatManager, OdaFiyatManager>();
+            builder.Services.AddScoped<IOdaManager, OdaManager>();
+            builder.Services.AddScoped<IRezervasyonDetayManager, RezervasyonDetayManager>();
+            builder.Services.AddScoped<RezervasyonManager, RezervasyonManager>();
+
+
+
+
 
             var app = builder.Build();
 

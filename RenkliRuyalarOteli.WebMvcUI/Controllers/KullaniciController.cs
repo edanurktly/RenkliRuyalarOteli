@@ -16,5 +16,10 @@ namespace RenkliRuyalarOteli.WebMvcUI.Controllers
             var result = await kullaniciManager.FindAllAsync();
             return View(result);
         }
+
+        public async Task<IActionResult> Kayit()
+        {
+            return View();
+        }
     }
 }

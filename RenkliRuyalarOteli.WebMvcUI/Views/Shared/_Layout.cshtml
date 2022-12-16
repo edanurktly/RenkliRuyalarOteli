@@ -60,7 +60,15 @@
 					</li>
 					<li class="header-nav-list"><a class="header-nav-link" href="facilities.html">Facilities</a></li>
 					<li class="header-nav-list"><a class="header-nav-link" href="contact-page.html">Contact Us</a></li>
-					<li class="header-nav-list"><a class="header-btn header-btn-custom" asp-controller="Login" asp-action="Giris">Login</a></li>
+					@if (User.Identity.IsAuthenticated)
+					{
+						<li class="header-nav-list"><a class="header-btn header-btn-custom" asp-controller="Login" asp-action="Logout">Logout</a></li>
+					}
+					else
+					{
+						<li class="header-nav-list"><a class="header-btn header-btn-custom" asp-controller="Login" asp-action="Giris">Login</a></li>
+					}
+
 				</ul>
 
 				<div class="header-hamburger-icon">

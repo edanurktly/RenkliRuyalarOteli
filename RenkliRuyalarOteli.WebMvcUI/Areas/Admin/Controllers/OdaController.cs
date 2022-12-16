@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RenkliRuyalarOteli.BL.Abstract;
 
 namespace RenkliRuyalarOteli.WebMvcUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin, ")]
     public class OdaController : Controller
     {
+
         private readonly IOdaManager odaManager;
         public OdaController(IOdaManager odaManager)
         {

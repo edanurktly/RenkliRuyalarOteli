@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RenkliRuyalarOteli.BL.Abstract;
 
 namespace RenkliRuyalarOteli.WebMvcUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin, ")]
     public class OdaFiyatController : Controller
     {
         private readonly IOdaFiyatManager odaFiyatManager;

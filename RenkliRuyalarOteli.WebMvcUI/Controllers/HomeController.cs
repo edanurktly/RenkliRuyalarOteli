@@ -20,7 +20,12 @@ namespace RenkliRuyalarOteli.WebMvcUI.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            /*
+             * 
+             * 
+             * */
+
+            return Redirect("https://www.google.com");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

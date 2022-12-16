@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using RenkliRuyalarOteli.WebMvcUI.Extensions;
 
 namespace RenkliRuyalarOteli.WebMvcUI
@@ -11,9 +12,16 @@ namespace RenkliRuyalarOteli.WebMvcUI
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRenkliRuyalarManager();
-
-
-
+            #region Cookie Base Authentication Ayarlari
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                               .AddCookie(p =>
+                               {
+                                   p.LoginPath = "/Login/Giris";
+                                   p.LogoutPath = "/Login/LogOut";
+                                   p.Cookie.Name = "RenkliRuyalarOteli";
+                                   p.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                               });
+            #endregion
 
 
             var app = builder.Build();
@@ -30,12 +38,8 @@ namespace RenkliRuyalarOteli.WebMvcUI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.UseEndpoints(endpoints =>
             {
@@ -44,6 +48,12 @@ namespace RenkliRuyalarOteli.WebMvcUI
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
             });
+
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 
             app.Run();

@@ -17,7 +17,7 @@ namespace RenkliRuyalarOteli.WebMvcUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await odaFiyatManager.FindAllAsync();
+            var result = await odaFiyatManager.FindAllAsnyc();
             return View(result);
         }
     }

@@ -15,7 +15,7 @@ namespace RenkliRuyalarOteli.WebMvcUI.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var result = await musteriManager.FindAllAsync();
+            var result = await musteriManager.FindAllAsnyc();
             return View(result);
         }
     }

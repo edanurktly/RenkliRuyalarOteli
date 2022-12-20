@@ -42,28 +42,37 @@ namespace RenkliRuyalarOteli.WebMvcUI.Controllers
                 return View(login);
 
             }
-            //Claim 'leri olusturup cookie icerisine atalim
+            //Claim 'leri olusturup cookie icerisine atalim. HEr bir Claim Kimlik karti 
+            //uzerinde bulunacak alan olarak dusunulebilir.
             //new Claim(ClaimTypes.Name, kullanici.Email.Split("@")[0])
             var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Email,kullanici.Email),
                 new Claim(ClaimTypes.Role,"Admin"),
-                new Claim(ClaimTypes.Name,kullanici.Adi + " " + kullanici.Soyadi)
+                new Claim(ClaimTypes.Name,kullanici.Adi + " " + kullanici.Soyadi),
+                new Claim(ClaimTypes.DateOfBirth,kullanici.DogumTarihi.ToString()),
+                new Claim("TcNo",kullanici.TcNo),
+                new Claim(ClaimTypes.Gender,kullanici.Cinsiyet.ToString()),
+                new Claim(ClaimTypes.Uri,kullanici.ImageUrl==null?"":kullanici.ImageUrl)
+
 
             };
-
+            //Kimlik Kartini Olusturdugumuz yer. Kart uzerinde hangi lalanlarin oldugu bilgisi
+            //claims Listesinde mevcuttur
             var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
             var authenticationProperty = new AuthenticationProperties
             {
                 IsPersistent = login.RememberMe
             };
 
+            // Kullanici icin  claimIdentity kimlik karti ile giris yapilmistir. 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme
                                             , new ClaimsPrincipal(claimIdentity)
                                             , authenticationProperty);
 
 
-
+            // Giris yapilmis ve kimlik karti olusturulmus kullanci Area icerisindeki Admin Bolumune yonlemndirildi
             return RedirectToAction("Index", "Home", new { Area = "Admin" });
         }
 

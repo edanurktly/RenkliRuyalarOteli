@@ -16,7 +16,7 @@ namespace RenkliRuyalarOteli.WebMvcUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await rezervasyonManager.FindAllAsync();
+            var result = await rezervasyonManager.FindAllAsnyc();
             return View(result);
         }
     }

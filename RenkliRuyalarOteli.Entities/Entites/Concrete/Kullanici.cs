@@ -18,7 +18,7 @@ namespace RenkliRuyalarOteli.Entities.Entites.Concrete
 
         public byte[] ImageData { get; set; }
 
-
+        public string? ImageUrl { get; set; }
 
         public ICollection<Role> Roller { get; set; }
         public ICollection<Musteri> Musteriler { get; set; }

@@ -4,6 +4,15 @@ namespace RenkliRuyalarOteli.Entities.Entites.Concrete
 {
     public class Kullanici : BaseEntity
     {
+        public Kullanici()
+        {
+            Roller = new HashSet<Role>();
+            Musteriler = new HashSet<Musteri>();
+            Odalar = new HashSet<Oda>();
+            OdaFiyatlari = new HashSet<OdaFiyat>();
+            Rezervasyonlar = new HashSet<Rezervasyon>();
+            RezervasyonDetaylari = new HashSet<RezervasyonDetay>();
+        }
         public string KullaniciAdi { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
